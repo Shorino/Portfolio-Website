@@ -1,767 +1,1809 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joel Sim Ka Lok | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-card:#1a1a2e;
-            --bg-card-hover:#1f1f35;--accent:#6c63ff;--accent-light:#8b83ff;
-            --accent-glow:rgba(108,99,255,0.3);--accent-secondary:#00d4aa;
-            --text-primary:#f0f0f5;--text-secondary:#a0a0b8;--text-muted:#6a6a80;
-            --border:rgba(255,255,255,0.06);--border-hover:rgba(108,99,255,0.3);
-            --gradient-1:linear-gradient(135deg,#6c63ff,#00d4aa);
-            --gradient-2:linear-gradient(135deg,#6c63ff,#e040fb);
-            --radius:16px;--transition:0.3s cubic-bezier(0.4,0,0.2,1);
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
         }
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.7;overflow-x:hidden}
-        ::-webkit-scrollbar{width:8px}
-        ::-webkit-scrollbar-track{background:var(--bg-primary)}
-        ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #1f1f35;
+            --accent: #6c63ff;
+            --accent-light: #8b83ff;
+            --accent-glow: rgba(108, 99, 255, 0.3);
+            --accent-secondary: #00d4aa;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a80;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(108, 99, 255, 0.3);
+            --gradient-1: linear-gradient(135deg, #6c63ff, #00d4aa);
+            --gradient-2: linear-gradient(135deg, #6c63ff, #e040fb);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px
+        }
 
         /* Background */
-        .bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(108,99,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(108,99,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
-        .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
-        .bg-orb-1{width:600px;height:600px;background:rgba(108,99,255,0.08);top:-200px;right:-200px}
-        .bg-orb-2{width:500px;height:500px;background:rgba(0,212,170,0.06);bottom:20%;left:-150px}
-        .bg-orb-3{width:400px;height:400px;background:rgba(224,64,251,0.05);bottom:-100px;right:10%}
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(108, 99, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(108, 99, 255, 0.08);
+            top: -200px;
+            right: -200px
+        }
+
+        .bg-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 212, 170, 0.06);
+            bottom: 20%;
+            left: -150px
+        }
+
+        .bg-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: rgba(224, 64, 251, 0.05);
+            bottom: -100px;
+            right: 10%
+        }
 
         /* Nav */
-        nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;transition:var(--transition)}
-        nav.scrolled{background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
-        .nav-logo{font-weight:800;font-size:1.3rem;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px}
-        .nav-links{display:flex;gap:0.5rem;list-style:none}
-        .nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.88rem;font-weight:500;padding:0.5rem 1rem;border-radius:8px;transition:var(--transition)}
-        .nav-links a:hover{color:var(--text-primary);background:rgba(255,255,255,0.05)}
-        .nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;padding:0.5rem}
-        .nav-toggle svg{width:24px;height:24px}
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            transition: var(--transition)
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition)
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05)
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px
+        }
 
         /* Sections */
-        section{position:relative;z-index:1;padding:6rem 2rem}
-        .container{max-width:1200px;margin:0 auto}
-        .section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:1rem}
-        .section-label::before{content:'';width:30px;height:2px;background:var(--accent);border-radius:2px}
-        .section-title{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:1rem;line-height:1.2}
-        .section-subtitle{color:var(--text-secondary);font-size:1.05rem;max-width:600px;margin-bottom:3rem}
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            line-height: 1.2
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin-bottom: 3rem
+        }
 
         /* Hero */
-        #hero{min-height:100vh;display:flex;align-items:center;padding-top:72px}
-        .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.2);padding:0.4rem 1rem;border-radius:50px;font-size:0.82rem;color:var(--accent-light);margin-bottom:1.5rem;font-weight:500}
-        .hero-badge .pulse{width:8px;height:8px;background:var(--accent-secondary);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
-        .hero-name{font-size:clamp(2.8rem,6vw,4.2rem);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:0.5rem}
-        .hero-name .gradient{background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-role{font-size:1.3rem;color:var(--text-secondary);font-weight:400;margin-bottom:1.5rem}
-        .hero-desc{color:var(--text-secondary);font-size:1rem;line-height:1.8;margin-bottom:2rem;max-width:520px}
-        .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
-        .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;border-radius:12px;font-size:0.92rem;font-weight:600;text-decoration:none;transition:var(--transition);cursor:pointer;border:none;font-family:inherit}
-        .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 20px var(--accent-glow)}
-        .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow)}
-        .btn-outline{background:transparent;color:var(--text-primary);border:1px solid var(--border)}
-        .btn-outline:hover{border-color:var(--accent);background:rgba(108,99,255,0.05);transform:translateY(-2px)}
-        .hero-stats{display:flex;gap:2.5rem}
-        .hero-stat-num{font-size:1.8rem;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-stat-label{font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:500}
-        .hero-visual{display:flex;justify-content:center;align-items:center}
-        .hero-card{position:relative;width:100%;max-width:420px;background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;backdrop-filter:blur(10px);animation:float 6s ease-in-out infinite}
-        .hero-card::before{content:'';position:absolute;inset:-1px;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(108,99,255,0.3),transparent,rgba(0,212,170,0.3));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-        .hero-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
-        .hero-avatar{width:64px;height:64px;border-radius:16px;background:var(--gradient-1);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800}
-        .hero-card-name{font-weight:700;font-size:1.1rem}
-        .hero-card-role{color:var(--text-muted);font-size:0.85rem}
-        .hero-code{background:rgba(0,0,0,0.3);border-radius:12px;padding:1.2rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.9}
-        .hero-code .comment{color:var(--text-muted)}
-        .hero-code .keyword{color:var(--accent-light)}
-        .hero-code .string{color:var(--accent-secondary)}
-        .hero-code .prop{color:#e040fb}
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(108, 99, 255, 0.1);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+            font-weight: 500
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.5)
+            }
+        }
+
+        .hero-name {
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 0.5rem
+        }
+
+        .hero-name .gradient {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .hero-role {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 520px
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: inherit
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 20px var(--accent-glow)
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--accent-glow)
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border)
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(108, 99, 255, 0.05);
+            transform: translateY(-2px)
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem
+        }
+
+        .hero-stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        .hero-card {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.3), transparent, rgba(0, 212, 170, 0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem
+        }
+
+        .hero-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 800
+        }
+
+        .hero-card-name {
+            font-weight: 700;
+            font-size: 1.1rem
+        }
+
+        .hero-card-role {
+            color: var(--text-muted);
+            font-size: 0.85rem
+        }
+
+        .hero-code {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            line-height: 1.9
+        }
+
+        .hero-code .comment {
+            color: var(--text-muted)
+        }
+
+        .hero-code .keyword {
+            color: var(--accent-light)
+        }
+
+        .hero-code .string {
+            color: var(--accent-secondary)
+        }
+
+        .hero-code .prop {
+            color: #e040fb
+        }
 
         /* Skills */
-        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-        .skill-category{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:var(--transition)}
-        .skill-category:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
-        .skill-category-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem}
-        .skill-category h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
-        .skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
-        .skill-tag{padding:0.35rem 0.9rem;background:rgba(108,99,255,0.08);border:1px solid rgba(108,99,255,0.15);border-radius:8px;font-size:0.82rem;color:var(--text-secondary);font-weight:500;transition:var(--transition)}
-        .skill-tag:hover{background:rgba(108,99,255,0.15);color:var(--text-primary);border-color:rgba(108,99,255,0.3)}
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition)
+        }
+
+        .skill-category:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2)
+        }
+
+        .skill-category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem
+        }
+
+        .skill-tag {
+            padding: 0.35rem 0.9rem;
+            background: rgba(108, 99, 255, 0.08);
+            border: 1px solid rgba(108, 99, 255, 0.15);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition)
+        }
+
+        .skill-tag:hover {
+            background: rgba(108, 99, 255, 0.15);
+            color: var(--text-primary);
+            border-color: rgba(108, 99, 255, 0.3)
+        }
 
         /* Timeline */
-        .timeline{position:relative}
-        .timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent-secondary),transparent)}
-        .timeline-item{position:relative;padding-left:72px;padding-bottom:3rem}
-        .timeline-item:last-child{padding-bottom:0}
-        .timeline-dot{position:absolute;left:16px;top:6px;width:18px;height:18px;border-radius:50%;background:var(--bg-primary);border:3px solid var(--accent);z-index:2}
-        .timeline-item:first-child .timeline-dot{background:var(--accent);box-shadow:0 0 12px var(--accent-glow)}
-        .timeline-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:var(--transition)}
-        .timeline-card:hover{border-color:var(--border-hover);box-shadow:0 8px 30px rgba(0,0,0,0.15)}
-        .timeline-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.5rem;flex-wrap:wrap}
-        .timeline-title{font-size:1.15rem;font-weight:700}
-        .timeline-date{font-size:0.8rem;color:var(--accent);font-weight:600;background:rgba(108,99,255,0.1);padding:0.25rem 0.8rem;border-radius:50px;white-space:nowrap}
-        .timeline-company{color:var(--text-secondary);font-size:0.92rem;margin-bottom:1rem;font-weight:500}
-        .timeline-points{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
-        .timeline-points li{color:var(--text-secondary);font-size:0.88rem;line-height:1.6;padding-left:1.2rem;position:relative}
-        .timeline-points li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--accent);border-radius:50%}
+        .timeline {
+            position: relative
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), transparent)
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 72px;
+            padding-bottom: 3rem
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 16px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent);
+            z-index: 2
+        }
+
+        .timeline-item:first-child .timeline-dot {
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow)
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition)
+        }
+
+        .timeline-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15)
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            background: rgba(108, 99, 255, 0.1);
+            padding: 0.25rem 0.8rem;
+            border-radius: 50px;
+            white-space: nowrap
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+            font-weight: 500
+        }
+
+        .timeline-points {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem
+        }
+
+        .timeline-points li {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            padding-left: 1.2rem;
+            position: relative
+        }
+
+        .timeline-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%
+        }
 
         /* Projects / Videos */
-        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2rem}
-        .project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
-        .project-card:hover{border-color:var(--border-hover);transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.25)}
-        .project-card.featured{grid-column:1 / -1}
-        .project-card.featured .video-wrapper{max-height:480px}
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem
+        }
 
-        .video-wrapper{position:relative;width:100%;padding-bottom:56.25%;background:#000;cursor:pointer;overflow:hidden}
-        .video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-        .video-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease,filter 0.4s ease}
-        .video-wrapper:hover .video-thumb{transform:scale(1.05);filter:brightness(0.7)}
-        .video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:rgba(108,99,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;transition:transform 0.3s ease,background 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 24px rgba(108,99,255,0.4)}
-        .video-play-btn svg{margin-left:3px}
-        .video-wrapper:hover .video-play-btn{transform:translate(-50%,-50%) scale(1.12);background:rgba(108,99,255,1);box-shadow:0 8px 36px rgba(108,99,255,0.6)}
-        .video-wrapper.playing .video-thumb,.video-wrapper.playing .video-play-btn{display:none}
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition)
+        }
 
-        .project-info{padding:1.5rem}
-        .project-tag-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem}
-        .project-tag{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:0.25rem 0.7rem;border-radius:6px;background:rgba(108,99,255,0.1);color:var(--accent-light)}
-        .project-tag.award{background:rgba(255,215,0,0.12);color:#ffd700}
-        .project-title{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem}
-        .project-desc{color:var(--text-secondary);font-size:0.88rem;line-height:1.6}
-        .project-videos-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
-        .project-videos-row .video-wrapper{padding-bottom:56.25%}
-        .project-videos-row .video-play-btn{width:48px;height:48px}
-        .project-videos-row .video-play-btn svg{width:20px;height:20px}
+        .project-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25)
+        }
+
+        .project-card.featured {
+            grid-column: 1 / -1
+        }
+
+        .project-card.featured .video-wrapper {
+            max-height: 480px
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+            cursor: pointer;
+            overflow: hidden
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none
+        }
+
+        .video-thumb {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease
+        }
+
+        .video-wrapper:hover .video-thumb {
+            transform: scale(1.05);
+            filter: brightness(0.7)
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            background: rgba(108, 99, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 24px rgba(108, 99, 255, 0.4)
+        }
+
+        .video-play-btn svg {
+            margin-left: 3px
+        }
+
+        .video-wrapper:hover .video-play-btn {
+            transform: translate(-50%, -50%) scale(1.12);
+            background: rgba(108, 99, 255, 1);
+            box-shadow: 0 8px 36px rgba(108, 99, 255, 0.6)
+        }
+
+        .video-wrapper.playing .video-thumb,
+        .video-wrapper.playing .video-play-btn {
+            display: none
+        }
+
+        .project-info {
+            padding: 1.5rem
+        }
+
+        .project-tag-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.8rem
+        }
+
+        .project-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.7rem;
+            border-radius: 6px;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--accent-light)
+        }
+
+        .project-tag.award {
+            background: rgba(255, 215, 0, 0.12);
+            color: #ffd700
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6
+        }
+
+        .project-videos-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--border)
+        }
+
+        .project-videos-row .video-wrapper {
+            padding-bottom: 56.25%
+        }
+
+        .project-videos-row .video-play-btn {
+            width: 48px;
+            height: 48px
+        }
+
+        .project-videos-row .video-play-btn svg {
+            width: 20px;
+            height: 20px
+        }
 
         /* Education */
-        .education-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-        .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:var(--transition);position:relative;overflow:hidden}
-        .edu-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1)}
-        .edu-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
-        .edu-degree{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem}
-        .edu-school{color:var(--text-secondary);font-size:0.9rem;font-weight:500;margin-bottom:0.8rem}
-        .edu-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
-        .edu-meta span{font-size:0.82rem;color:var(--text-muted);display:flex;align-items:center;gap:0.4rem}
-        .edu-cgpa{font-weight:600;color:var(--accent-secondary) !important}
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden
+        }
+
+        .edu-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1)
+        }
+
+        .edu-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px)
+        }
+
+        .edu-degree {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem
+        }
+
+        .edu-school {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem
+        }
+
+        .edu-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        .edu-meta span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem
+        }
+
+        .edu-cgpa {
+            font-weight: 600;
+            color: var(--accent-secondary) !important
+        }
 
         /* Awards */
-        .awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-        .award-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:var(--transition);text-align:center}
-        .award-card:hover{border-color:rgba(255,215,0,0.3);transform:translateY(-4px);box-shadow:0 8px 30px rgba(255,215,0,0.05)}
-        .award-icon{font-size:2.2rem;margin-bottom:0.8rem}
-        .award-title{font-size:0.95rem;font-weight:700;margin-bottom:0.3rem}
-        .award-org{font-size:0.8rem;color:var(--text-muted)}
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem
+        }
+
+        .award-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            transition: var(--transition);
+            text-align: center
+        }
+
+        .award-card:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.05)
+        }
+
+        .award-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem
+        }
+
+        .award-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem
+        }
+
+        .award-org {
+            font-size: 0.8rem;
+            color: var(--text-muted)
+        }
 
         /* Contact */
-        .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
-        .contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;text-align:center;transition:var(--transition);text-decoration:none;color:inherit;display:block}
-        .contact-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.15)}
-        .contact-icon{width:52px;height:52px;margin:0 auto 1rem;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
-        .contact-label{font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:0.3rem}
-        .contact-value{font-size:0.95rem;font-weight:600;color:var(--text-primary);word-break:break-all}
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block
+        }
+
+        .contact-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15)
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 1rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem
+        }
+
+        .contact-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.3rem
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            word-break: break-all
+        }
 
         /* Footer */
-        footer{position:relative;z-index:1;padding:3rem 2rem;text-align:center;border-top:1px solid var(--border)}
-        footer p{color:var(--text-muted);font-size:0.85rem}
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border)
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem
+        }
 
         /* Animations */
-        .fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
-        .fade-in.visible{opacity:1;transform:translateY(0)}
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
 
         /* Responsive */
-        @media(max-width:900px){
-            .hero-content{grid-template-columns:1fr;text-align:center}
-            .hero-desc{margin-left:auto;margin-right:auto}
-            .hero-actions{justify-content:center}
-            .hero-stats{justify-content:center}
-            .hero-visual{order:-1}
-            .hero-card{max-width:360px}
-            .projects-grid{grid-template-columns:1fr}
-            .project-card.featured{grid-column:auto}
-            .project-videos-row{grid-template-columns:1fr}
-            .timeline::before{left:16px}
-            .timeline-item{padding-left:56px}
-            .timeline-dot{left:8px}
+        @media(max-width:900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            .hero-actions {
+                justify-content: center
+            }
+
+            .hero-stats {
+                justify-content: center
+            }
+
+            .hero-visual {
+                order: -1
+            }
+
+            .hero-card {
+                max-width: 360px
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr
+            }
+
+            .project-card.featured {
+                grid-column: auto
+            }
+
+            .project-videos-row {
+                grid-template-columns: 1fr
+            }
+
+            .timeline::before {
+                left: 16px
+            }
+
+            .timeline-item {
+                padding-left: 56px
+            }
+
+            .timeline-dot {
+                left: 8px
+            }
         }
-        @media(max-width:600px){
-            section{padding:4rem 1rem}
-            .nav-links{display:none}
-            .nav-links.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(10,10,15,0.95);backdrop-filter:blur(20px);padding:1rem;border-bottom:1px solid var(--border)}
-            .nav-toggle{display:block}
-            .hero-stats{gap:1.5rem}
-            .timeline-header{flex-direction:column}
+
+        @media(max-width:600px) {
+            section {
+                padding: 4rem 1rem
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1rem;
+                border-bottom: 1px solid var(--border)
+            }
+
+            .nav-toggle {
+                display: block
+            }
+
+            .hero-stats {
+                gap: 1.5rem
+            }
+
+            .timeline-header {
+                flex-direction: column
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="bg-grid"></div>
-<div class="bg-orb bg-orb-1"></div>
-<div class="bg-orb bg-orb-2"></div>
-<div class="bg-orb bg-orb-3"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
 
-<!-- Navigation -->
-<nav id="navbar">
-    <div class="nav-inner">
-        <div class="nav-logo">Joel.dev</div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-    </div>
-</nav>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <div class="nav-logo">Joel.dev</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </nav>
 
-<!-- Hero -->
-<section id="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-badge"><span class="pulse"></span> Available for opportunities</div>
-                <h1 class="hero-name">Joel Sim<br><span class="gradient">Ka Lok</span></h1>
-                <p class="hero-role">Cocos Software Engineer &amp; Game Developer</p>
-                <p class="hero-desc">A versatile Software Engineer with experience spanning Cocos app development, game programming, and algorithmic trading. Currently building high-performance applications with Cocos Creator at LHK Century while independently architecting a proprietary live algorithmic trading system in Python.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        View Projects
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        Get In Touch
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div><div class="hero-stat-num">6+</div><div class="hero-stat-label">Years Experience</div></div>
-                    <div><div class="hero-stat-num">10+</div><div class="hero-stat-label">Games Shipped</div></div>
-                    <div><div class="hero-stat-num">4</div><div class="hero-stat-label">Companies</div></div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-card">
-                    <div class="hero-card-header">
-                        <div class="hero-avatar">JS</div>
+    <!-- Hero -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge"><span class="pulse"></span> Available for opportunities</div>
+                    <h1 class="hero-name">Joel Sim<br><span class="gradient">Ka Lok</span></h1>
+                    <p class="hero-role">Cocos Software Engineer &amp; Game Developer</p>
+                    <p class="hero-desc">A versatile Software Engineer with experience spanning Cocos app development,
+                        game programming, and algorithmic trading. Currently building high-performance applications with
+                        Cocos Creator at LHK Century while independently architecting a proprietary live algorithmic
+                        trading system in Python.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            Get In Touch
+                        </a>
+                    </div>
+                    <div class="hero-stats">
                         <div>
-                            <div class="hero-card-name">Joel Sim Ka Lok</div>
-                            <div class="hero-card-role">Kuala Lumpur, Malaysia</div>
+                            <div class="hero-stat-num">6+</div>
+                            <div class="hero-stat-label">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-num">10+</div>
+                            <div class="hero-stat-label">Games Shipped</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-num">4</div>
+                            <div class="hero-stat-label">Companies</div>
                         </div>
                     </div>
-                    <div class="hero-code">
-                        <span class="comment">// current status</span><br>
-                        <span class="keyword">const</span> <span class="prop">joel</span> = {<br>
-                        &nbsp;&nbsp;<span class="prop">role</span>: <span class="string">"Cocos Engineer"</span>,<br>
-                        &nbsp;&nbsp;<span class="prop">company</span>: <span class="string">"LHK Century"</span>,<br>
-                        &nbsp;&nbsp;<span class="prop">sideProject</span>: <span class="string">"Algo Trading"</span>,<br>
-                        &nbsp;&nbsp;<span class="prop">passion</span>: <span class="string">"Game Dev"</span>,<br>
-                        &nbsp;&nbsp;<span class="prop">coffee</span>: <span class="keyword">Infinity</span><br>
-                        };
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="hero-card-header">
+                            <div class="hero-avatar">JS</div>
+                            <div>
+                                <div class="hero-card-name">Joel Sim Ka Lok</div>
+                                <div class="hero-card-role">Kuala Lumpur, Malaysia</div>
+                            </div>
+                        </div>
+                        <div class="hero-code">
+                            <span class="comment">// current status</span><br>
+                            <span class="keyword">const</span> <span class="prop">joel</span> = {<br>
+                            &nbsp;&nbsp;<span class="prop">role</span>: <span class="string">"Cocos
+                                Engineer"</span>,<br>
+                            &nbsp;&nbsp;<span class="prop">company</span>: <span class="string">"LHK
+                                Century"</span>,<br>
+                            &nbsp;&nbsp;<span class="prop">sideProject</span>: <span class="string">"Algo
+                                Trading"</span>,<br>
+                            &nbsp;&nbsp;<span class="prop">passion</span>: <span class="string">"Game Dev"</span>,<br>
+                            &nbsp;&nbsp;<span class="prop">coffee</span>: <span class="keyword">Infinity</span><br>
+                            };
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Skills -->
-<section id="skills">
-    <div class="container">
-        <div class="section-label">Expertise</div>
-        <h2 class="section-title">Skills &amp; Technologies</h2>
-        <p class="section-subtitle">A diverse toolkit built across game development, web engineering, and quantitative systems.</p>
-        <div class="skills-grid fade-in">
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(108,99,255,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-label">Expertise</div>
+            <h2 class="section-title">Skills &amp; Technologies</h2>
+            <p class="section-subtitle">A diverse toolkit built across game development, web engineering, and
+                quantitative systems.</p>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(108,99,255,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                    </div>
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span><span
+                            class="skill-tag">Python</span><span class="skill-tag">C#</span><span
+                            class="skill-tag">Java</span>
+                    </div>
                 </div>
-                <h3>Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Python</span><span class="skill-tag">C#</span><span class="skill-tag">Java</span>
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(0,212,170,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                    </div>
+                    <h3>Game Engines &amp; Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Unity Engine</span><span class="skill-tag">Cocos Creator</span><span
+                            class="skill-tag">Spring WebFlux</span><span class="skill-tag">LangChain</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(0,212,170,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(224,64,251,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e040fb" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                    </div>
+                    <h3>Backend &amp; Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span><span class="skill-tag">AWS</span><span
+                            class="skill-tag">MongoDB</span><span class="skill-tag">MSSQL</span><span
+                            class="skill-tag">CI/CD</span>
+                    </div>
                 </div>
-                <h3>Game Engines &amp; Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Unity Engine</span><span class="skill-tag">Cocos Creator</span><span class="skill-tag">Spring WebFlux</span><span class="skill-tag">LangChain</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(224,64,251,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e040fb" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                </div>
-                <h3>Backend &amp; Cloud</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Node.js</span><span class="skill-tag">AWS</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MSSQL</span><span class="skill-tag">CI/CD</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(255,167,38,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                </div>
-                <h3>AI &amp; Data</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Machine Learning</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">NumPy / Pandas</span><span class="skill-tag">OpenAI GPT</span><span class="skill-tag">Reinforcement Learning</span>
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(255,167,38,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4" />
+                            <path d="M12 8h.01" />
+                        </svg>
+                    </div>
+                    <h3>AI &amp; Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Machine Learning</span><span class="skill-tag">TensorFlow</span><span
+                            class="skill-tag">NumPy / Pandas</span><span class="skill-tag">OpenAI GPT</span><span
+                            class="skill-tag">Reinforcement Learning</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Experience -->
-<section id="experience">
-    <div class="container">
-        <div class="section-label">Career Path</div>
-        <h2 class="section-title">Work Experience</h2>
-        <p class="section-subtitle">A journey through game studios, software houses, and independent trading systems.</p>
-        <div class="timeline fade-in">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div><div class="timeline-title">Cocos Software Engineer</div><div class="timeline-company">LHK Century SDN BHD</div></div>
-                        <span class="timeline-date">Jan 2024 &ndash; Present</span>
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-label">Career Path</div>
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">A journey through game studios, software houses, and independent trading
+                systems.</p>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Cocos Software Engineer</div>
+                                <div class="timeline-company">LHK Century SDN BHD</div>
+                            </div>
+                            <span class="timeline-date">Jan 2024 &ndash; Present</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Leveraged Cocos Creator to design, develop, and integrate new features into a live
+                                production application, consistently delivering improvements that elevated user
+                                experience.</li>
+                            <li>Executed performance optimization strategies within the Cocos Creator engine, including
+                                memory management, rendering pipeline improvements, and asset loading efficiency.</li>
+                            <li>Maintained version control workflows using SVN, defining branching strategies and merge
+                                protocols that streamlined multi-developer collaboration.</li>
+                            <li>Key contributor to live application reliability by investigating and diagnosing
+                                production issues, conducting root cause analysis, and delivering targeted fixes.</li>
+                            <li>Adopted AI-assisted development tools (Cursor and Claude Code) to accelerate development
+                                workflows and improve code quality.</li>
+                        </ul>
                     </div>
-                    <ul class="timeline-points">
-                        <li>Leveraged Cocos Creator to design, develop, and integrate new features into a live production application, consistently delivering improvements that elevated user experience.</li>
-                        <li>Executed performance optimization strategies within the Cocos Creator engine, including memory management, rendering pipeline improvements, and asset loading efficiency.</li>
-                        <li>Maintained version control workflows using SVN, defining branching strategies and merge protocols that streamlined multi-developer collaboration.</li>
-                        <li>Key contributor to live application reliability by investigating and diagnosing production issues, conducting root cause analysis, and delivering targeted fixes.</li>
-                        <li>Adopted AI-assisted development tools (Cursor and Claude Code) to accelerate development workflows and improve code quality.</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div><div class="timeline-title">Software Engineer</div><div class="timeline-company">TAG Resources and Technologies (Malaysia) SDN BHD</div></div>
-                        <span class="timeline-date">Sep 2022 &ndash; Dec 2023</span>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Software Engineer</div>
+                                <div class="timeline-company">TAG Resources and Technologies (Malaysia) SDN BHD</div>
+                            </div>
+                            <span class="timeline-date">Sep 2022 &ndash; Dec 2023</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Contributed to the design and development of Java backend applications built on the
+                                Spring WebFlux framework, ensuring high throughput under concurrent workloads.</li>
+                            <li>Managed MSSQL database schemas and queries to support backend application requirements
+                                and query performance.</li>
+                            <li>Conducted R&amp;D in LLM integration using the LangChain framework and OpenAI GPT
+                                models, exploring prompt engineering and chain-of-thought workflows.</li>
+                            <li>Contributed to a Python-based backend powering a production chatbot service, integrating
+                                LLM responses into structured API endpoints.</li>
+                        </ul>
                     </div>
-                    <ul class="timeline-points">
-                        <li>Contributed to the design and development of Java backend applications built on the Spring WebFlux framework, ensuring high throughput under concurrent workloads.</li>
-                        <li>Managed MSSQL database schemas and queries to support backend application requirements and query performance.</li>
-                        <li>Conducted R&amp;D in LLM integration using the LangChain framework and OpenAI GPT models, exploring prompt engineering and chain-of-thought workflows.</li>
-                        <li>Contributed to a Python-based backend powering a production chatbot service, integrating LLM responses into structured API endpoints.</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div><div class="timeline-title">Game Programmer</div><div class="timeline-company">GameLobb Studio SDN BHD</div></div>
-                        <span class="timeline-date">Aug 2020 &ndash; Aug 2022</span>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Game Programmer</div>
+                                <div class="timeline-company">GameLobb Studio SDN BHD</div>
+                            </div>
+                            <span class="timeline-date">Aug 2020 &ndash; Aug 2022</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Collaborated on an in-house mobile game project (Battle of the Rim) built with Unity ECS
+                                and C#, leveraging Entity Component System architecture for high-performance mobile
+                                gameplay.</li>
+                            <li>Architected a reusable game template system in Cocos Creator, streamlining development
+                                and deployment of 10+ web-based games.</li>
+                            <li>Engineered a high-concurrency gameplay server using Node.js with real-time state
+                                synchronization for multiplayer experiences.</li>
+                            <li>Researched and delivered a machine learning application (Soccer Striker AI Demo)
+                                leveraging Reinforcement Learning with the PPO algorithm and TensorFlow.</li>
+                        </ul>
                     </div>
-                    <ul class="timeline-points">
-                        <li>Collaborated on an in-house mobile game project (Battle of the Rim) built with Unity ECS and C#, leveraging Entity Component System architecture for high-performance mobile gameplay.</li>
-                        <li>Architected a reusable game template system in Cocos Creator, streamlining development and deployment of 10+ web-based games.</li>
-                        <li>Engineered a high-concurrency gameplay server using Node.js with real-time state synchronization for multiplayer experiences.</li>
-                        <li>Researched and delivered a machine learning application (Soccer Striker AI Demo) leveraging Reinforcement Learning with the PPO algorithm and TensorFlow.</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div><div class="timeline-title">Unity Programmer</div><div class="timeline-company">Framemotion Studio SDN BHD</div></div>
-                        <span class="timeline-date">Feb 2020 &ndash; Jul 2020</span>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Unity Programmer</div>
+                                <div class="timeline-company">Framemotion Studio SDN BHD</div>
+                            </div>
+                            <span class="timeline-date">Feb 2020 &ndash; Jul 2020</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Involved in end-to-end development of two interactive event applications: Dasein
+                                TouchScreen and Maxis TouchWall, delivering responsive touch-driven experiences for live
+                                events.</li>
+                            <li>Designed and deployed Spark AR applications across Instagram and Facebook, creating
+                                immersive augmented reality filters.</li>
+                            <li>Conducted comprehensive technical research and evaluation of Unity plugins and SDKs
+                                including Agora.io, Vivox, and AR SDKs.</li>
+                        </ul>
                     </div>
-                    <ul class="timeline-points">
-                        <li>Involved in end-to-end development of two interactive event applications: Dasein TouchScreen and Maxis TouchWall, delivering responsive touch-driven experiences for live events.</li>
-                        <li>Designed and deployed Spark AR applications across Instagram and Facebook, creating immersive augmented reality filters.</li>
-                        <li>Conducted comprehensive technical research and evaluation of Unity plugins and SDKs including Agora.io, Vivox, and AR SDKs.</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div><div class="timeline-title">Museum Tour Guide</div><div class="timeline-company">Royal Selangor</div></div>
-                        <span class="timeline-date">Feb 2020 &ndash; Jul 2020</span>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Museum Tour Guide</div>
+                                <div class="timeline-company">Royal Selangor</div>
+                            </div>
+                            <span class="timeline-date">Feb 2020 &ndash; Jul 2020</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Served as a knowledgeable tour guide across museum and factory venues, delivering
+                                compelling narratives to groups of up to 100 visitors.</li>
+                            <li>Acted as the primary point of contact for visitor inquiries, confidently addressing
+                                questions and highlighting key exhibit features.</li>
+                        </ul>
                     </div>
-                    <ul class="timeline-points">
-                        <li>Served as a knowledgeable tour guide across museum and factory venues, delivering compelling narratives to groups of up to 100 visitors.</li>
-                        <li>Acted as the primary point of contact for visitor inquiries, confidently addressing questions and highlighting key exhibit features.</li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Projects -->
-<section id="projects">
-    <div class="container">
-        <div class="section-label">Showcase</div>
-        <h2 class="section-title">Projects &amp; Demos</h2>
-        <p class="section-subtitle">Interactive demos and gameplay showcases from professional and personal projects.</p>
-        <div class="projects-grid fade-in">
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-label">Showcase</div>
+            <h2 class="section-title">Projects &amp; Demos</h2>
+            <p class="section-subtitle">Interactive demos and gameplay showcases from professional and personal
+                projects.</p>
+            <div class="projects-grid fade-in">
 
-            <!-- PlantsWar AR - Featured -->
-            <div class="project-card featured">
-                <div class="video-wrapper" data-video-id="XGzk9pO2kIY" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/XGzk9pO2kIY/hqdefault.jpg" alt="PlantsWar AR Demo">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">Unity</span>
-                        <span class="project-tag">Augmented Reality</span>
-                        <span class="project-tag">Final Year Project</span>
-                        <span class="project-tag award">Gold Award - ICDXA 2020</span>
+                <!-- PlantsWar AR - Featured -->
+                <div class="project-card featured">
+                    <div class="video-wrapper" data-video-id="XGzk9pO2kIY" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/XGzk9pO2kIY/hqdefault.jpg"
+                            alt="PlantsWar AR Demo">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
                     </div>
-                    <div class="project-title">PlantsWar &ndash; Augmented Reality Game</div>
-                    <div class="project-desc">Award-winning final year project that combines augmented reality with strategic gameplay. Won the Gold Award at the International Conference on Digital Transformation and Applications (ICDXA) 2020.</div>
-                </div>
-            </div>
-
-            <!-- Dasein Touchscreen -->
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="QFF9eaGxB60" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/QFF9eaGxB60/hqdefault.jpg" alt="Dasein Touchscreen">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">Unity</span>
-                        <span class="project-tag">Interactive</span>
-                        <span class="project-tag">Professional</span>
-                    </div>
-                    <div class="project-title">Dasein Interactive Touchscreen</div>
-                    <div class="project-desc">Interactive touchscreen application developed at Framemotion Studio (2020). Built for live event environments with responsive touch-driven experiences.</div>
-                </div>
-            </div>
-
-            <!-- Soccer Striker ML -->
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="FYTCsbGdl0A" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/FYTCsbGdl0A/hqdefault.jpg" alt="Soccer Striker ML">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">Machine Learning</span>
-                        <span class="project-tag">PPO Algorithm</span>
-                        <span class="project-tag">Professional</span>
-                    </div>
-                    <div class="project-title">Soccer Striker &ndash; ML Agent Demo</div>
-                    <div class="project-desc">Machine learning demo using the Proximal Policy Optimization algorithm. Frontend built with Cocos Creator, backend server using Node.js. Developed at GameLobb Studio (2022).</div>
-                </div>
-            </div>
-
-            <!-- Cocos Creator Games -->
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="NBm_J-N_t2o" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/NBm_J-N_t2o/hqdefault.jpg" alt="Cocos Creator Games">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">Cocos Creator</span>
-                        <span class="project-tag">Web Games</span>
-                        <span class="project-tag">Professional</span>
-                    </div>
-                    <div class="project-title">Cocos Creator Game Collection</div>
-                    <div class="project-desc">A showcase of 10+ web-based games developed during the 2020-2022 period at GameLobb Studio, built on a reusable modular game template system.</div>
-                </div>
-            </div>
-
-            <!-- MStar Unity -->
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="UvSLlk_XDs8" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/UvSLlk_XDs8/hqdefault.jpg" alt="MStar Unity">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">Unity</span>
-                        <span class="project-tag">3D Game</span>
-                        <span class="project-tag">Personal</span>
-                    </div>
-                    <div class="project-title">MStar Unity Gameplay</div>
-                    <div class="project-desc">A personal project developed during the MCO period, demonstrating Unity game development skills with engaging 3D gameplay mechanics.</div>
-                </div>
-            </div>
-
-            <!-- Unity 3D Character Dev -->
-            <div class="project-card">
-                <div class="project-videos-row">
-                    <div class="video-wrapper" data-video-id="XrBjaVGVnUI" onclick="playVideo(this)">
-                        <img class="video-thumb" src="https://img.youtube.com/vi/XrBjaVGVnUI/hqdefault.jpg" alt="3D Character 1">
-                        <div class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                    </div>
-                    <div class="video-wrapper" data-video-id="RYJ6mWwHnb0" onclick="playVideo(this)">
-                        <img class="video-thumb" src="https://img.youtube.com/vi/RYJ6mWwHnb0/hqdefault.jpg" alt="3D Character 2">
-                        <div class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                    </div>
-                    <div class="video-wrapper" data-video-id="T5ci6zPck1k" onclick="playVideo(this)">
-                        <img class="video-thumb" src="https://img.youtube.com/vi/T5ci6zPck1k/hqdefault.jpg" alt="3D Character 3">
-                        <div class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">Augmented Reality</span>
+                            <span class="project-tag">Final Year Project</span>
+                            <span class="project-tag award">Gold Award - ICDXA 2020</span>
+                        </div>
+                        <div class="project-title">PlantsWar &ndash; Augmented Reality Game</div>
+                        <div class="project-desc">Award-winning final year project that combines augmented reality with
+                            strategic gameplay. Won the Gold Award at the International Conference on Digital
+                            Transformation and Applications (ICDXA) 2020.</div>
                     </div>
                 </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">Unity</span>
-                        <span class="project-tag">3D Character</span>
-                        <span class="project-tag">Personal</span>
+
+                <!-- Dasein Touchscreen -->
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="QFF9eaGxB60" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/QFF9eaGxB60/hqdefault.jpg"
+                            alt="Dasein Touchscreen">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
                     </div>
-                    <div class="project-title">Unity 3D Character Development</div>
-                    <div class="project-desc">A self-initiated project showcasing 3D character development in Unity, featuring character rigging, animation systems, and interactive demonstrations.</div>
-                </div>
-            </div>
-
-            <!-- University Projects -->
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="9vAwpSLtsS4" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/9vAwpSLtsS4/hqdefault.jpg" alt="Stick Runner">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">University</span>
-                        <span class="project-tag">Game Dev</span>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">Interactive</span>
+                            <span class="project-tag">Professional</span>
+                        </div>
+                        <div class="project-title">Dasein Interactive Touchscreen</div>
+                        <div class="project-desc">Interactive touchscreen application developed at Framemotion Studio
+                            (2020). Built for live event environments with responsive touch-driven experiences.</div>
                     </div>
-                    <div class="project-title">Stick Runner</div>
-                    <div class="project-desc">An endless runner game developed as a university project, featuring dynamic obstacle generation and scoring systems.</div>
                 </div>
-            </div>
 
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="UstBgJuxMVU" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/UstBgJuxMVU/hqdefault.jpg" alt="Stick Fighter">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">University</span>
-                        <span class="project-tag">Game Dev</span>
+                <!-- Soccer Striker ML -->
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="FYTCsbGdl0A" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/FYTCsbGdl0A/hqdefault.jpg"
+                            alt="Soccer Striker ML">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
                     </div>
-                    <div class="project-title">Stick Fighter</div>
-                    <div class="project-desc">A fighting game developed as a university project, featuring character combat mechanics and interactive gameplay.</div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="video-wrapper" data-video-id="vzsIkrWt3o4" onclick="playVideo(this)">
-                    <img class="video-thumb" src="https://img.youtube.com/vi/vzsIkrWt3o4/hqdefault.jpg" alt="Metal Ball">
-                    <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                </div>
-                <div class="project-info">
-                    <div class="project-tag-row">
-                        <span class="project-tag">University</span>
-                        <span class="project-tag">Game Dev</span>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">PPO Algorithm</span>
+                            <span class="project-tag">Professional</span>
+                        </div>
+                        <div class="project-title">Soccer Striker &ndash; ML Agent Demo</div>
+                        <div class="project-desc">Machine learning demo using the Proximal Policy Optimization
+                            algorithm. Frontend built with Cocos Creator, backend server using Node.js. Developed at
+                            GameLobb Studio (2022).</div>
                     </div>
-                    <div class="project-title">Metal Ball</div>
-                    <div class="project-desc">A physics-based ball game developed as a university project, showcasing gameplay mechanics and level design fundamentals.</div>
                 </div>
-            </div>
 
-        </div>
-    </div>
-</section>
+                <!-- Cocos Creator Games -->
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="NBm_J-N_t2o" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/NBm_J-N_t2o/hqdefault.jpg"
+                            alt="Cocos Creator Games">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">Cocos Creator</span>
+                            <span class="project-tag">Web Games</span>
+                            <span class="project-tag">Professional</span>
+                        </div>
+                        <div class="project-title">Cocos Creator Game Collection</div>
+                        <div class="project-desc">A showcase of 10+ web-based games developed during the 2020-2022
+                            period at GameLobb Studio, built on a reusable modular game template system.</div>
+                    </div>
+                </div>
 
-<!-- Personal Projects -->
-<section id="personal-projects">
-    <div class="container">
-        <div class="section-label">Side Quest</div>
-        <h2 class="section-title">Quantitative Trading</h2>
-        <p class="section-subtitle">An independently architected algorithmic trading ecosystem, active since March 2023.</p>
-        <div class="skills-grid fade-in">
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(0,212,170,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <!-- MStar Unity -->
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="UvSLlk_XDs8" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/UvSLlk_XDs8/hqdefault.jpg"
+                            alt="MStar Unity">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">3D Game</span>
+                            <span class="project-tag">Personal</span>
+                        </div>
+                        <div class="project-title">MStar Unity Gameplay</div>
+                        <div class="project-desc">A personal project developed during the MCO period, demonstrating
+                            Unity game development skills with engaging 3D gameplay mechanics.</div>
+                    </div>
                 </div>
-                <h3>Automated Trading Bots</h3>
-                <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Multi-Strategy</span><span class="skill-tag">Real-Time Execution</span><span class="skill-tag">Position Sizing</span></div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(108,99,255,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                </div>
-                <h3>Backtesting Framework</h3>
-                <div class="skill-tags"><span class="skill-tag">NumPy / Pandas</span><span class="skill-tag">Heatmaps</span><span class="skill-tag">Sharpe Ratio</span><span class="skill-tag">Vectorized Computation</span></div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(224,64,251,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e040fb" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                </div>
-                <h3>Infrastructure &amp; DevOps</h3>
-                <div class="skill-tags"><span class="skill-tag">AWS Lightsail</span><span class="skill-tag">CI/CD (GitHub Actions)</span><span class="skill-tag">MongoDB</span><span class="skill-tag">CloudWatch</span></div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-icon" style="background:rgba(255,167,38,0.1)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-                </div>
-                <h3>Mobile Trading Assistant</h3>
-                <div class="skill-tags"><span class="skill-tag">Unity Frontend</span><span class="skill-tag">Node.js Backend</span><span class="skill-tag">Risk Management</span><span class="skill-tag">Live Alerts</span></div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Education -->
-<section id="education">
-    <div class="container">
-        <div class="section-label">Academic</div>
-        <h2 class="section-title">Education</h2>
-        <p class="section-subtitle">Strong academic foundation in Interactive Software Technology from TARUMT.</p>
-        <div class="education-grid fade-in">
-            <div class="edu-card">
-                <div class="edu-degree">Bachelor's Degree in Interactive Software Technology</div>
-                <div class="edu-school">Tunku Abdul Rahman University of Management and Technology</div>
-                <div class="edu-meta">
-                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> May 2018 &ndash; Aug 2020</span>
-                    <span class="edu-cgpa">CGPA: 3.6733 (Merit)</span>
+                <!-- Unity 3D Character Dev -->
+                <div class="project-card">
+                    <div class="project-videos-row">
+                        <div class="video-wrapper" data-video-id="XrBjaVGVnUI" onclick="playVideo(this)">
+                            <img class="video-thumb" src="https://img.youtube.com/vi/XrBjaVGVnUI/hqdefault.jpg"
+                                alt="3D Character 1">
+                            <div class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg></div>
+                        </div>
+                        <div class="video-wrapper" data-video-id="RYJ6mWwHnb0" onclick="playVideo(this)">
+                            <img class="video-thumb" src="https://img.youtube.com/vi/RYJ6mWwHnb0/hqdefault.jpg"
+                                alt="3D Character 2">
+                            <div class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg></div>
+                        </div>
+                        <div class="video-wrapper" data-video-id="T5ci6zPck1k" onclick="playVideo(this)">
+                            <img class="video-thumb" src="https://img.youtube.com/vi/T5ci6zPck1k/hqdefault.jpg"
+                                alt="3D Character 3">
+                            <div class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">3D Character</span>
+                            <span class="project-tag">Personal</span>
+                        </div>
+                        <div class="project-title">Unity 3D Character Development</div>
+                        <div class="project-desc">A self-initiated project showcasing 3D character development in Unity,
+                            featuring character rigging, animation systems, and interactive demonstrations.</div>
+                    </div>
                 </div>
-            </div>
-            <div class="edu-card">
-                <div class="edu-degree">Diploma in Interactive Software Technology</div>
-                <div class="edu-school">Tunku Abdul Rahman University of Management and Technology</div>
-                <div class="edu-meta">
-                    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> May 2016 &ndash; Apr 2018</span>
-                    <span class="edu-cgpa">CGPA: 3.8333 (Distinction)</span>
+
+                <!-- University Projects -->
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="9vAwpSLtsS4" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/9vAwpSLtsS4/hqdefault.jpg"
+                            alt="Stick Runner">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">University</span>
+                            <span class="project-tag">Game Dev</span>
+                        </div>
+                        <div class="project-title">Stick Runner</div>
+                        <div class="project-desc">An endless runner game developed as a university project, featuring
+                            dynamic obstacle generation and scoring systems.</div>
+                    </div>
                 </div>
+
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="UstBgJuxMVU" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/UstBgJuxMVU/hqdefault.jpg"
+                            alt="Stick Fighter">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">University</span>
+                            <span class="project-tag">Game Dev</span>
+                        </div>
+                        <div class="project-title">Stick Fighter</div>
+                        <div class="project-desc">A fighting game developed as a university project, featuring character
+                            combat mechanics and interactive gameplay.</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="video-wrapper" data-video-id="vzsIkrWt3o4" onclick="playVideo(this)">
+                        <img class="video-thumb" src="https://img.youtube.com/vi/vzsIkrWt3o4/hqdefault.jpg"
+                            alt="Metal Ball">
+                        <div class="video-play-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag-row">
+                            <span class="project-tag">University</span>
+                            <span class="project-tag">Game Dev</span>
+                        </div>
+                        <div class="project-title">Metal Ball</div>
+                        <div class="project-desc">A physics-based ball game developed as a university project,
+                            showcasing gameplay mechanics and level design fundamentals.</div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- Awards -->
-        <div style="margin-top:4rem">
-            <div class="section-label">Recognition</div>
-            <h2 class="section-title">Honors &amp; Awards</h2>
-            <div class="awards-grid fade-in" style="margin-top:2rem">
-                <div class="award-card">
-                    <div class="award-icon">&#127942;</div>
-                    <div class="award-title">Gold Award &ndash; ICDXA 2020</div>
-                    <div class="award-org">PlantsWar &mdash; International Conference on Digital Transformation and Applications</div>
+    <!-- Personal Projects -->
+    <section id="personal-projects">
+        <div class="container">
+            <div class="section-label">Side Quest</div>
+            <h2 class="section-title">Quantitative Trading</h2>
+            <p class="section-subtitle">An independently architected algorithmic trading ecosystem, active since March
+                2023.</p>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(0,212,170,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                    </div>
+                    <h3>Automated Trading Bots</h3>
+                    <div class="skill-tags"><span class="skill-tag">Python</span><span
+                            class="skill-tag">Multi-Strategy</span><span class="skill-tag">Real-Time
+                            Execution</span><span class="skill-tag">Position Sizing</span></div>
                 </div>
-                <div class="award-card">
-                    <div class="award-icon">&#127941;</div>
-                    <div class="award-title">Dean's List &ndash; Mar 2019</div>
-                    <div class="award-org">TARUMT &mdash; Outstanding Academic Performance</div>
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(108,99,255,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18" />
+                            <path d="M9 21V9" />
+                        </svg>
+                    </div>
+                    <h3>Backtesting Framework</h3>
+                    <div class="skill-tags"><span class="skill-tag">NumPy / Pandas</span><span
+                            class="skill-tag">Heatmaps</span><span class="skill-tag">Sharpe Ratio</span><span
+                            class="skill-tag">Vectorized Computation</span></div>
                 </div>
-                <div class="award-card">
-                    <div class="award-icon">&#127941;</div>
-                    <div class="award-title">Dean's List &ndash; May 2018</div>
-                    <div class="award-org">TARUMT &mdash; Outstanding Academic Performance</div>
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(224,64,251,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e040fb" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3>Infrastructure &amp; DevOps</h3>
+                    <div class="skill-tags"><span class="skill-tag">AWS Lightsail</span><span class="skill-tag">CI/CD
+                            (GitHub Actions)</span><span class="skill-tag">MongoDB</span><span
+                            class="skill-tag">CloudWatch</span></div>
                 </div>
-                <div class="award-card">
-                    <div class="award-icon">&#128218;</div>
-                    <div class="award-title">Book Price Award</div>
-                    <div class="award-org">TARUMT &mdash; Outstanding Performance in Diploma</div>
+                <div class="skill-category">
+                    <div class="skill-category-icon" style="background:rgba(255,167,38,0.1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" />
+                            <path d="M12 18h.01" />
+                        </svg>
+                    </div>
+                    <h3>Mobile Trading Assistant</h3>
+                    <div class="skill-tags"><span class="skill-tag">Unity Frontend</span><span class="skill-tag">Node.js
+                            Backend</span><span class="skill-tag">Risk Management</span><span class="skill-tag">Live
+                            Alerts</span></div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Contact -->
-<section id="contact">
-    <div class="container">
-        <div class="section-label">Let's Connect</div>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Open to new opportunities, collaborations, and interesting conversations.</p>
-        <div class="contact-grid fade-in">
-            <a href="mailto:simkalok0914@gmail.com" class="contact-card">
-                <div class="contact-icon" style="background:rgba(108,99,255,0.1)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <div class="section-label">Academic</div>
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Strong academic foundation in Interactive Software Technology from TARUMT.</p>
+            <div class="education-grid fade-in">
+                <div class="edu-card">
+                    <div class="edu-degree">Bachelor's Degree in Interactive Software Technology</div>
+                    <div class="edu-school">Tunku Abdul Rahman University of Management and Technology</div>
+                    <div class="edu-meta">
+                        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg> May 2018 &ndash; Aug 2020</span>
+                        <span class="edu-cgpa">CGPA: 3.6733 (Merit)</span>
+                    </div>
                 </div>
-                <div class="contact-label">Email</div>
-                <div class="contact-value">simkalok0914@gmail.com</div>
-            </a>
-            <a href="tel:+60133736778" class="contact-card">
-                <div class="contact-icon" style="background:rgba(0,212,170,0.1)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div class="edu-card">
+                    <div class="edu-degree">Diploma in Interactive Software Technology</div>
+                    <div class="edu-school">Tunku Abdul Rahman University of Management and Technology</div>
+                    <div class="edu-meta">
+                        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg> May 2016 &ndash; Apr 2018</span>
+                        <span class="edu-cgpa">CGPA: 3.8333 (Distinction)</span>
+                    </div>
                 </div>
-                <div class="contact-label">Phone</div>
-                <div class="contact-value">+6013 - 373 6778</div>
-            </a>
-            <a href="https://linkedin.com/in/joel-sim-ka-lok" target="_blank" class="contact-card">
-                <div class="contact-icon" style="background:rgba(224,64,251,0.1)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e040fb" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+
+            <!-- Awards -->
+            <div style="margin-top:4rem">
+                <div class="section-label">Recognition</div>
+                <h2 class="section-title">Honors &amp; Awards</h2>
+                <div class="awards-grid fade-in" style="margin-top:2rem">
+                    <div class="award-card">
+                        <div class="award-icon">&#127942;</div>
+                        <div class="award-title">Gold Award &ndash; ICDXA 2020</div>
+                        <div class="award-org">PlantsWar &mdash; International Conference on Digital Transformation and
+                            Applications</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">&#127941;</div>
+                        <div class="award-title">Dean's List &ndash; Mar 2019</div>
+                        <div class="award-org">TARUMT &mdash; Outstanding Academic Performance</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">&#127941;</div>
+                        <div class="award-title">Dean's List &ndash; May 2018</div>
+                        <div class="award-org">TARUMT &mdash; Outstanding Academic Performance</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">&#128218;</div>
+                        <div class="award-title">Book Price Award</div>
+                        <div class="award-org">TARUMT &mdash; Outstanding Performance in Diploma</div>
+                    </div>
                 </div>
-                <div class="contact-label">LinkedIn</div>
-                <div class="contact-value">joel-sim-ka-lok</div>
-            </a>
-            <div class="contact-card">
-                <div class="contact-icon" style="background:rgba(255,167,38,0.1)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div class="contact-label">Location</div>
-                <div class="contact-value">Kuala Lumpur, Malaysia</div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <p>&copy; 2026 Joel Sim Ka Lok. Built with passion and code.</p>
-</footer>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Open to new opportunities, collaborations, and interesting conversations.</p>
+            <div class="contact-grid fade-in">
+                <a href="mailto:simkalok0914@gmail.com" class="contact-card">
+                    <div class="contact-icon" style="background:rgba(108,99,255,0.1)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">simkalok0914@gmail.com</div>
+                </a>
+                <a href="tel:+60133736778" class="contact-card">
+                    <div class="contact-icon" style="background:rgba(0,212,170,0.1)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                    </div>
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+6013 - 373 6778</div>
+                </a>
+                <a href="https://linkedin.com/in/joel-sim-ka-lok" target="_blank" class="contact-card">
+                    <div class="contact-icon" style="background:rgba(224,64,251,0.1)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e040fb" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </div>
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">joel-sim-ka-lok</div>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon" style="background:rgba(255,167,38,0.1)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">Kuala Lumpur, Malaysia</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-// Click-to-play: loads YouTube iframe only when user clicks
-function playVideo(wrapper) {
-    if (wrapper.classList.contains('playing')) return;
-    var videoId = wrapper.getAttribute('data-video-id');
-    var iframe = document.createElement('iframe');
-    iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0');
-    iframe.setAttribute('title', 'YouTube video');
-    iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-    iframe.setAttribute('allowfullscreen', '');
-    wrapper.classList.add('playing');
-    wrapper.appendChild(iframe);
-}
+    <footer>
+        <p>&copy; 2026 Joel Sim Ka Lok. Built with passion and code.</p>
+    </footer>
 
-// Navbar scroll effect
-var navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function() {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// Mobile nav toggle
-var navToggle = document.getElementById('navToggle');
-var navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', function() {
-    navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() { navLinks.classList.remove('open'); });
-});
-
-// Scroll reveal
-var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+    <script>
+        // Click-to-play: loads YouTube iframe only when user clicks
+        function playVideo(wrapper) {
+            if (wrapper.classList.contains('playing')) return;
+            var videoId = wrapper.getAttribute('data-video-id');
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0');
+            iframe.setAttribute('title', 'YouTube video');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            wrapper.classList.add('playing');
+            wrapper.appendChild(iframe);
         }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-});
-</script>
+        // Navbar scroll effect
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function () {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile nav toggle
+        var navToggle = document.getElementById('navToggle');
+        var navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', function () {
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () { navLinks.classList.remove('open'); });
+        });
+
+        // Scroll reveal
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-in').forEach(function (el) { observer.observe(el); });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
 </body>
+
 </html>
